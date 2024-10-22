@@ -1,0 +1,14 @@
+# go to google cloud console and create a file store manually
+apiVersion: v1
+kind: PersistentVolume 
+metadata:
+  name: file-store-vol
+spec:
+  capacity:
+    storage: 1Ti
+  accessModes:
+    - ReadWriteMany 
+  persistentVolumeReclaimPolicy: Retain
+  nfs: 
+    server: 10.152.38.34
+    path: /vol01
