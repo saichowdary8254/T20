@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-lb-deploy
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: httpd-lb-deploy
+  template:
+    metadata:
+      labels:
+        app: httpd-lb-deploy
+    spec:
+      containers:
+      - name: httpd-lb-deploy
+        image: httpd
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service 
+metadata:
+  name: httpd-lb-service
+spec: 
+  type: LoadBalancer 
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+  selector:
+    app: httpd-lb-deploy

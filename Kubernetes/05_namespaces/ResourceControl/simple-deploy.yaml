@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: nginx-deploy
+  namespace: devopsteam
+spec:
+  replicas: 10
+  selector: 
+    matchLabels:
+      app: nginx-deploy
+  template:
+    metadata:
+      labels:
+        app: nginx-deploy
+    spec: 
+      containers:
+      - name: nginx-deploy
+        image: nginx
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "160m"
+            memory: "200Mi"
+          limits: 
+            cpu: "220m"
+            memory: "300Mi"
