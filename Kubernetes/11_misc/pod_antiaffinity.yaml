@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      team: dev
+  template:
+    metadata:
+      labels:
+        team: dev
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+      affinity: 
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: location
+              labelSelector:
+                matchExpressions:
+                  - key: team
+                    operator: In 
+                    values: 
+                      - dev
