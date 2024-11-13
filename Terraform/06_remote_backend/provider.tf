@@ -13,7 +13,7 @@ terraform {
     storage_account_name = "nextopstfsat20"                      
     container_name       = "tfstate"                       
     key                  = "terraform.tfstate"
-    access_key          = "Nnnghomwti8gvWxCZ15ReVYmxQndglhYSuldlJfDV3wPAwxl7Eso0gJzYz2TY4rYHwPkVWYeprp5+ASt98/kyA=="        
+    access_key          = "jfaksdnkcnidjcijdiankdnkndinikniknikanfidif"        
   }
 }
 
