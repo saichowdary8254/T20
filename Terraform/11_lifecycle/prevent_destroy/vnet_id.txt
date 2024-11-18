@@ -1,0 +1,1 @@
+/subscriptions/a355c32e-4a22-4b05-aab4-be236850fa6e/resourceGroups/nextopsrg07/providers/Microsoft.Network/virtualNetworks/NextOpsVNET08 
