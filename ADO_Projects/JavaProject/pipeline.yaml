@@ -1,0 +1,31 @@
+pool:
+  name: Azure Pipelines
+  demands: maven
+
+steps:
+- task: Maven@3
+  displayName: 'Maven pom.xml'
+  inputs:
+    goals: validate
+
+- task: Maven@3
+  displayName: 'Maven pom.xml'
+  inputs:
+    goals: compile
+
+- task: Maven@3
+  displayName: 'Maven pom.xml'
+  inputs:
+    options: '-DskipITs --settings ./maven/settings.xml'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(build.sourcesdirectory)'
+    Contents: |
+     **/target/*.war
+     *.sql
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
