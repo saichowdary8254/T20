@@ -1,0 +1,12 @@
+- name: creating dynamic variables 
+  hosts: lservers
+  remote_user: root 
+
+  tasks:
+  - name: create a variable with remote hostname
+    command: hostname
+    register: hostname_variable
+  
+  - name: print dynamic variable value on the screen 
+    debug: 
+      msg: "{{ hostname_variable.stdout }}"

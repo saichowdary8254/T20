@@ -1,0 +1,7 @@
+---
+- name: Exectuing roles
+  hosts: lampservers
+  remote_user: root
+
+  roles:  
+  - copy_files

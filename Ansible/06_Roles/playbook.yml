@@ -1,0 +1,8 @@
+---
+- name: Exectuing roles
+  hosts: lservers
+  remote_user: root
+
+  roles:  
+  - install_apps
+  - copy_files

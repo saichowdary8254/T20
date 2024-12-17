@@ -1,0 +1,2 @@
+ansible-galaxy init copy_files
+ansible-galaxy init install_apps

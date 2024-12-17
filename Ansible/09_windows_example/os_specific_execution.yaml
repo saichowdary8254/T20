@@ -1,0 +1,24 @@
+- name: Installing webserver application based on OS
+  hosts: lservers,win
+  remote_user: root 
+
+  tasks: 
+  - name: Installing nginx on Ubuntu
+    apt:
+      name: nginx
+      state: present 
+    when: ansible_os_family == "Debian"
+  
+  - name: Installing apache on RedHat
+    yum:
+      name: apache2
+      state: present 
+    when: ansible_os_family == "RedHat"
+  
+  - name: Installing IIS on windows
+    win_feature:
+      name: 
+      - Web-Server
+      - Web-Common-Http 
+      state: absent 
+    when: ansible_os_family == "Windows"

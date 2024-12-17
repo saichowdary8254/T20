@@ -1,0 +1,9 @@
+- name: facts_example
+  hosts: lservers
+  remote_user: root 
+  gather_facts: yes 
+
+  tasks:
+  - name: Display gathered facts
+    debug: 
+      var: ansible_facts

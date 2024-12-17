@@ -1,0 +1,9 @@
+- name: vars example1
+  hosts: lservers
+  remote_user: root
+  vars_files:
+  - vars.txt
+  
+  tasks:
+  - name: print the variable values into a text file on the remote machines
+    shell: echo "I have enrolled in {{ Course }} course and i am currently in {{ Module }} module" > /home/charan/vars_example2.txt

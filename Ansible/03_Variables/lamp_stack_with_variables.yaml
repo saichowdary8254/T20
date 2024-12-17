@@ -1,0 +1,41 @@
+- name: Install LAMP stack
+  hosts: lservers
+  remote_user: root
+
+  vars:
+    apache_pkg: apache2
+    mysql_pkg: mariadb-server
+    mysql_service: mariadb
+    php_pkgs:
+      - php
+      - php-mysql  
+
+  tasks: 
+  - name: Running apt-update
+    apt:
+      update-cache: yes
+  
+  - name: Starting apache service 
+    service: 
+      name: "{{ apache_pkg }}"
+      state: stopped
+  
+  - name: Installing Apache
+    apt:
+      name: "{{ apache_pkg }}"
+      state: absent  
+  
+  - name: Starting mysql service 
+    service: 
+      name: "{{ mysql_service }}"
+      state: stopped
+   
+  - name: Installing MySQL Community Edition
+    apt:
+      name: "{{ mysql_pkg }}"
+      state: absent 
+  
+  - name: install php
+    apt: 
+      name: "{{ php_pkgs }}"      
+      state: absent
