@@ -20,6 +20,13 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
+- task: DockerCompose@1
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureContainerRegistry: '{"loginServer":"testcontainer9966.azurecr.io", "id" : "/subscriptions/bad81f8c-a051-48c5-a29b-35a42a5f9e48/resourceGroups/test-prg/providers/Microsoft.ContainerRegistry/registries/testcontainer9966"}'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'yes'
 
 steps:
 - task: Maven@3
