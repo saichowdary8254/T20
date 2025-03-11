@@ -1,6 +1,0 @@
-rg_name = "AKSRG19"
-rg_location = "EastUS"
-vnet_name = "AKSVNET19"
-subnet01_name = "Subnet01"
-acr_name = "nextopsacr19"
-aks_name = "nextopsaks19"
